@@ -1,0 +1,246 @@
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  background: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* App Container */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+/* Layout styles */
+.ant-layout {
+  background: #f5f5f5;
+  width: 100%;
+}
+
+.ant-layout-header {
+  background: #001529;
+  padding: 0 20px;
+  height: 64px;
+  line-height: 64px;
+}
+
+/* Content area styles */
+.ant-layout-content {
+  min-height: calc(100vh - 64px);
+  padding: 24px;
+  background: #fff;
+}
+
+/* Card styles */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.ant-btn {
+  border-radius: 6px;
+}
+
+/* Animation for loading states */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Main content area */
+.main-content {
+  flex: 1;
+  min-height: 100vh;
+  padding: 20px;
+  margin-left: 200px; /* Space for side nav */
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Button grid layout */
+.button-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  align-items: center;
+  padding: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top-buttons, .bottom-buttons {
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 2rem;
+}
+
+.wallet-selector {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+/* Override any default margins/padding from the Ant Design component */
+.wallet-selector .ant-btn {
+  margin: 0;
+}
+
+/* Style the surrounding buttons */
+.top-buttons .ant-btn,
+.bottom-buttons .ant-btn {
+  min-width: 180px;
+  height: 50px;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+/* Menu button */
+.menu-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #333;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+  background: #444;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menu-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+/* Menu button animation */
+.menu-button.open .menu-icon span:first-child {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-button.open .menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-button.open .menu-icon span:last-child {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Overlay styles */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Center the wallet selector and add some spacing */
+.ant-btn-default.wallet-select-button {
+  margin: 0 auto;
+  display: block;
+}
+
+/* Ensure the dropdown menu is centered as well */
+.ant-dropdown {
+  transform: translateX(-50%);
+  left: 50% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .top-buttons, .bottom-buttons {
+    gap: 2rem;
+  }
+  
+  .button-grid {
+    gap: 4rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .button-grid {
+    gap: 3rem;
+    padding: 1rem;
+  }
+  
+  .top-buttons, .bottom-buttons {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .top-buttons .ant-btn,
+  .bottom-buttons .ant-btn {
+    min-width: 150px;
+    font-size: 14px;
+  }
+}
+
+/* Navigation components */
+.wallet-connect {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 1000 !important;
+}

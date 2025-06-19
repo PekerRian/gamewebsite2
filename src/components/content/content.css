@@ -1,0 +1,814 @@
+.cavemans-container {
+  padding: 2rem;
+  color: white;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.nft-display {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  gap: 1.5rem 1.5rem;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.nft-card {
+  perspective: 1000px;
+  cursor: pointer;
+  background: transparent;
+  aspect-ratio: 1;
+  min-height: 160px;
+  max-height: 180px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.nft-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.card-front {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-back {
+  background: rgba(26, 117, 255, 0.9);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 90%;
+}
+
+.action-buttons button {
+  padding: 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.action-buttons button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+.action-buttons button:active {
+  transform: translateY(0);
+}
+
+/* Storage Styles */
+.storage-container {
+  padding: 2rem;
+  color: white;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.storage-content {
+  width: 100%;
+  max-width: 1000px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+/* Category Carousel */
+.category-carousel {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  min-width: min-content;
+}
+
+.category-button {
+  padding: 0.8rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.category-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.category-button.active {
+  background: rgba(26, 117, 255, 0.6);
+  border-color: rgba(26, 117, 255, 0.8);
+}
+
+.category-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: white;
+}
+
+/* Inventory Grid */
+.inventory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.5rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  max-height: calc(100vh - 250px);
+}
+
+.inventory-slot {
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  min-height: 0;
+}
+
+.inventory-slot img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.inventory-slot:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.inventory-slot.selected {
+  border-color: rgba(26, 117, 255, 0.8);
+  box-shadow: 0 0 10px rgba(26, 117, 255, 0.4);
+}
+
+.inventory-slot.has-item {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.item-icon {
+  width: 70%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-icon {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+}
+
+.item-quantity {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.1rem 0.3rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  min-width: 1.5em;
+  text-align: center;
+}
+
+.item-tooltip {
+  display: none;
+  position: absolute;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.9);
+  padding: 0.5rem;
+  border-radius: 6px;
+  width: max-content;
+  z-index: 1000;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.inventory-slot:hover .item-tooltip {
+  display: flex;
+}
+
+.item-name {
+  font-weight: bold;
+  color: #1a75ff;
+}
+
+.item-desc {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .nft-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem;
+  }
+  .cavemans-container {
+    max-width: 900px;
+  }
+  .action-buttons button {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+  .inventory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .nft-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .cavemans-container {
+    max-width: 700px;
+  }
+  .action-buttons {
+    gap: 0.4rem;
+  }
+  .action-buttons button {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+  .inventory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .nft-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .action-buttons {
+    gap: 0.4rem;
+    width: 85%;
+  }
+  .action-buttons button {
+    padding: 0.45rem;
+    font-size: 0.75rem;
+  }
+  .cavemans-container {
+    padding: 1rem;
+    max-width: 500px;
+  }
+  .nft-card {
+    margin: 0.25rem;
+  }
+  .category-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+  .storage-container {
+    padding: 1rem;
+  }
+  .storage-content {
+    padding: 1rem;
+  }
+  .inventory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 0.4rem;
+  }
+  .category-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nft-grid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem;
+    gap: 1rem;
+  }
+  .action-buttons button {
+    padding: 0.4rem;
+    font-size: 0.7rem;
+  }
+  .cavemans-container {
+    padding: 0.5rem;
+  }
+  .nft-card {
+    margin: 0.25rem 0;
+  }
+  .carousel-track {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .category-button {
+    width: auto;
+    flex: 1 1 auto;
+    min-width: 100px;
+    text-align: center;
+  }
+  .storage-container {
+    padding: 0.5rem;
+  }
+  .storage-content {
+    padding: 0.5rem;
+  }
+  .inventory-grid {
+    grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
+    gap: 0.3rem;
+  }
+  .category-carousel {
+    padding: 0.5rem;
+  }
+}
+
+/* Hunting state styles */
+.nft-card.hunting {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.hunting-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 10;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hunting-overlay .countdown {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #4CAF50;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.hunting-overlay.completed {
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  pointer-events: all;
+}
+
+.claim-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  pointer-events: all;
+  z-index: 10;
+}
+
+.claim-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.claim-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: #3d8b40;
+}
+
+/* Loot popup styles */
+.loot-popup-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.loot-popup {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+  max-width: 500px;
+  border: 2px solid #333;
+}
+
+.loot-popup h3 {
+  margin-top: 0;
+  color: #fff;
+  text-align: center;
+}
+
+.loot-items {
+  margin: 20px 0;
+}
+
+.loot-item {
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+.accept-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.accept-button:hover {
+  background-color: #45a049;
+}
+
+.close-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #ff4444;
+  border: 2px solid #fff;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  line-height: 1;
+  transition: all 0.2s ease;
+  z-index: 1002;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.close-button:hover {
+  background-color: #ff6666;
+  transform: scale(1.1);
+}
+
+.close-button:active {
+  transform: scale(0.95);
+}
+
+.loot-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Disabled button styles */
+.action-buttons button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.item-details-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.item-details-popup {
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  padding: 20px;
+  width: 400px;
+  position: relative;
+  border: 2px solid #333;
+}
+
+.item-details-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-details-content h3 {
+  color: #fff;
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+}
+
+.item-icon.large {
+  width: 100px;
+  height: 100px;
+  background-color: #333;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-info {
+  text-align: center;
+  color: #fff;
+}
+
+.item-description {
+  color: #ccc;
+  margin: 10px 0;
+}
+
+/* Loot Display styles */
+.loot-display-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loot-display {
+  background-color: rgba(26, 26, 26, 0.95);
+  padding: 30px;
+  border-radius: 15px;
+  border: 2px solid #333;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
+}
+
+.loot-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loot-content h3 {
+  color: white;
+  margin: 0;
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.loot-items-display {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  min-width: 200px;
+}
+
+.loot-item-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  min-width: 100px;
+}
+
+.loot-item-image {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.loot-item-quantity {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.loot-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.accept-loot-button,
+.discard-loot-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.accept-loot-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.accept-loot-button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.discard-loot-button {
+  background-color: #ff4444;
+  color: white;
+}
+
+.discard-loot-button:hover {
+  background-color: #ff3333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.accept-loot-button:active,
+.discard-loot-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.nft-card .claim-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.nft-card .claim-button {
+  padding: 12px 24px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.nft-card .claim-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+}
+
+.nft-card .claim-button:active {
+  transform: scale(0.95);
+}
+
+.nft-card.can-claim {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 107, 107, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0);
+  }
+} 

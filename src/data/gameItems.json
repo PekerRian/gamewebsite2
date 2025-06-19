@@ -1,0 +1,72 @@
+{
+    "consumables": [
+        {
+            "id": "BBQ",
+            "name": "BBQ",
+            "description": "A delicious grilled meal",
+            "type": "food",
+            "restoreValue": 20
+        },
+        {
+            "id": "Cooked_Rice",
+            "name": "Cooked Rice",
+            "description": "A bowl of freshly cooked rice",
+            "type": "food",
+            "restoreValue": 15
+        }
+    ],
+    "materials": [
+        {
+            "id": "Grains",
+            "name": "Grains",
+            "description": "Raw grains that can be cooked",
+            "type": "cooking_material",
+            "stackable": true
+        },
+        {
+            "id": "Raw_Meat",
+            "name": "Raw Meat",
+            "description": "Fresh raw meat that needs to be cooked",
+            "type": "cooking_material",
+            "stackable": true
+        },
+        {
+            "id": "Rocks",
+            "name": "Rocks",
+            "description": "Basic building material",
+            "type": "building_material",
+            "stackable": true
+        }
+    ],
+    "articles": [
+        {
+            "id": "wooden_house_plan",
+            "name": "Wooden House Plan",
+            "description": "Blueprint for constructing a wooden house",
+            "type": "blueprint",
+            "requirements": {
+                "wood": 50,
+                "rocks": 20
+            }
+        },
+        {
+            "id": "brick_house_plan",
+            "name": "Brick House Plan",
+            "description": "Blueprint for constructing a brick house",
+            "type": "blueprint",
+            "requirements": {
+                "bricks": 100,
+                "rocks": 30
+            }
+        },
+        {
+            "id": "BBQ_recipe",
+            "name": "BBQ Recipe",
+            "description": "Recipe for cooking BBQ",
+            "type": "recipe",
+            "requirements": {
+                "Raw_Meat": 1
+            }
+        }
+    ]
+} 

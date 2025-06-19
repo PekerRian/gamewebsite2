@@ -1,0 +1,21 @@
+.aptosaurs-container,
+.storage-container,
+.mail-container {
+  padding: 2rem;
+  color: white;
+}
+
+.aptosaurs-container h2,
+.storage-container h2,
+.mail-container h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.content {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+} 
